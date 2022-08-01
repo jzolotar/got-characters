@@ -1,5 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { gotApi } from './api';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [gotApi.reducerPath]: gotApi.reducer,
+  },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
