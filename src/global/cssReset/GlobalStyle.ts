@@ -15,6 +15,8 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(to right, #5B86E5, #36D1DC);
+  padding: 5vw 10%;
 }
 img, picture, video, canvas, svg {
   display: block;

@@ -1,7 +1,12 @@
 import React from 'react';
+import CharacterList from './components/characterList/CharacterList';
 
 function App() {
-  return <div className='App'></div>;
+  return (
+    <div>
+      <CharacterList />
+    </div>
+  );
 }
 
 export default App;
