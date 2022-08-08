@@ -31,6 +31,12 @@ export const gotApi = createApi({
   endpoints: (builder) => ({
     getCharactersByDefault: builder.query<CharacterData[], void>({
       query: () => `?page=1&pageSize=10`,
+      transformResponse: (response: CharacterData[], meta, arg) => {
+        console.log(meta?.response?.headers.get('Link'));
+        console.log(Object.keys(meta!.response!.headers));
+        console.log(arg);
+        return response;
+      },
     }),
     getCharactersByInput: builder.query<CharacterData[], InputType>({
       query: ({ page, pageSize }) => `?page=${page}&pageSize=${pageSize}`,
