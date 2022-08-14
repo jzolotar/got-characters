@@ -5,11 +5,13 @@ import { StyledCharacterInfo } from '../characterInfo/CharacterInfo.styled';
 const TableHeader = () => {
   return (
     <TableRow>
-      <StyledCharacterInfo>Character</StyledCharacterInfo>
-      <StyledCharacterInfo>Alive</StyledCharacterInfo>
-      <StyledCharacterInfo>Gender</StyledCharacterInfo>
-      <StyledCharacterInfo>Culture</StyledCharacterInfo>
-      <StyledCharacterInfo>Allegiances</StyledCharacterInfo>
+      <StyledCharacterInfo dataAtr='Character'>Character</StyledCharacterInfo>
+      <StyledCharacterInfo dataAtr='Alive'>Alive</StyledCharacterInfo>
+      <StyledCharacterInfo dataAtr='Gender'>Gender</StyledCharacterInfo>
+      <StyledCharacterInfo dataAtr='Culture'>Culture</StyledCharacterInfo>
+      <StyledCharacterInfo dataAtr='Allegiances'>
+        Allegiances
+      </StyledCharacterInfo>
     </TableRow>
   );
 };

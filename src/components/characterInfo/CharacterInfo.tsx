@@ -1,7 +1,7 @@
 import { StyledCharacterInfo } from './CharacterInfo.styled';
 
 const CharacterInfo = () => {
-  return <StyledCharacterInfo>Test Info</StyledCharacterInfo>;
+  return <StyledCharacterInfo dataAtr='Title'>Test Info</StyledCharacterInfo>;
 };
 
 export default CharacterInfo;

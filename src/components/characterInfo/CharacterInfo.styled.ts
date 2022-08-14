@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledCharacterInfo = styled.div`
+interface Props {
+  dataAtr: string;
+}
+
+export const StyledCharacterInfo = styled.div<Props>`
   padding: 1rem;
   &:not(:last-child) {
     border-right: 1px solid #ddd;
@@ -18,7 +22,7 @@ export const StyledCharacterInfo = styled.div`
 
   @media (max-width: 800px) {
     &:before {
-      content: 'test';
+      content: '${(props) => props.dataAtr}';
       font-weight: bold;
       display: block;
       background: rgba(193, 193, 193, 0.528);
