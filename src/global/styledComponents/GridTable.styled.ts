@@ -8,7 +8,12 @@ export const GridTable = styled.section`
   border-radius: 0.5rem;
   gap: 0.25rem;
 
-  /* article:first-of-type {
-    display: none;
-  } */
+  @media (max-width: 800px) {
+    grid-gap: 2rem;
+    background: transparent;
+    box-shadow: none;
+    article:first-of-type {
+      display: none;
+    }
+  }
 `;

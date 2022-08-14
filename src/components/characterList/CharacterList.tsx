@@ -1,35 +1,17 @@
-import { TableRow } from '../../global/styledComponents/TableRow.styled';
-
 import { GridTable } from '../../global/styledComponents/GridTable.styled';
 
-import CharacterInfo from '../characterInfo/CharacterInfo';
 import TableHeader from '../tableHeader/TableHeader';
+import Character from '../character/Character';
 
 const CharacterList = () => {
   return (
     <GridTable>
       <TableHeader />
-      <TableRow>
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-      </TableRow>
-      <TableRow>
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-      </TableRow>
-      <TableRow>
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-        <CharacterInfo />
-      </TableRow>
+      <Character />
+      <Character />
+      <Character />
+      <Character />
+      <Character />
     </GridTable>
   );
 };
