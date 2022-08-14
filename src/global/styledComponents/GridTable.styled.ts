@@ -7,4 +7,8 @@ export const GridTable = styled.section`
   background: rgba(236, 232, 232, 0.98);
   border-radius: 0.5rem;
   gap: 0.25rem;
+
+  /* article:first-of-type {
+    display: none;
+  } */
 `;

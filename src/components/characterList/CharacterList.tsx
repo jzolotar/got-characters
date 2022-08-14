@@ -16,6 +16,20 @@ const CharacterList = () => {
         <CharacterInfo />
         <CharacterInfo />
       </TableRow>
+      <TableRow>
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+      </TableRow>
+      <TableRow>
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+        <CharacterInfo />
+      </TableRow>
     </GridTable>
   );
 };

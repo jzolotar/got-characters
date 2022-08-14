@@ -12,11 +12,7 @@ function App() {
     console.log(data);
   }
 
-  return (
-    <div>
-      <CharacterList />
-    </div>
-  );
+  return <CharacterList />;
 }
 
 export default App;
