@@ -59,6 +59,15 @@ interface CharacterData {
   playedBy: string[];
 }
 
+interface FinalData {
+  characters: CharacterData[];
+  pageInfo: {
+    first: { name: string; page: string; pageSize: string };
+    last: { name: string; page: string; pageSize: string };
+    next: { name: string; page: string; pageSize: string };
+  };
+}
+
 interface InputType {
   page: string;
   pageSize: string;
@@ -70,21 +79,19 @@ export const gotApi = createApi({
     baseUrl: 'https://www.anapioficeandfire.com/api/characters',
   }),
   endpoints: (builder) => ({
-    getCharactersByDefault: builder.query<
-      CharacterData[] | KeyValueMap<Object>,
-      void
-    >({
+    getCharactersByDefault: builder.query<FinalData, void>({
       query: () => `?page=1&pageSize=10`,
       transformResponse: (response: CharacterData[], meta, arg) => {
         // console.log(meta?.response?.headers.get('Link'));
         // console.log(Object.keys(meta!.response!.headers));
-        const link = meta!.response!.headers.get('Link');
-        if (link !== null) {
-          const testVal = { pageInfo: parseLinkHeader(link), data: response };
-          console.log(testVal);
-          return { pageInfo: parseLinkHeader(link), characters: response };
-        }
-        return response;
+        const link = meta!.response!.headers.get('Link') as string;
+
+        const transformedResponsed = {
+          characters: response,
+          pageInfo: parseLinkHeader(link),
+        } as FinalData;
+        console.log('response transformed');
+        return transformedResponsed;
       },
     }),
     getCharactersByInput: builder.query<CharacterData[], InputType>({
