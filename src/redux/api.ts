@@ -51,6 +51,7 @@ interface CharacterData {
   aliases: string[];
   father: string;
   mother: string;
+  gender: string;
   spuse: string;
   allegiances: string[];
   books: string[];

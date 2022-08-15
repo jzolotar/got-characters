@@ -8,15 +8,37 @@ import Loader from '../loader/Loader';
 const CharacterList = () => {
   const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery();
 
-  console.log(data);
+  const mergeNameAlliases = () => {};
 
-  const content = (
-    <GridTable>
-      <TableHeader />
-    </GridTable>
-  );
+  const checkAlive = () => {};
 
-  return isSuccess && !isFetching ? content : <Loader />;
+  const checkCulture = () => {};
+
+  let content;
+
+  if (isSuccess) {
+    console.log(data.characters);
+    content = (
+      <GridTable>
+        <TableHeader />
+        {data!.characters.map((elem, index) => (
+          <Character
+            key={index}
+            characterData={{ name: elem.name, dataAtr: 'Character' }}
+            aliveData={{ alive: elem.died, dataAtr: 'Alive' }}
+            genderData={{ gender: elem.gender, dataAtr: 'Gender' }}
+            cultureData={{ culture: elem.culture, dataAtr: 'Culture' }}
+            allegiancesData={{
+              allegiances: elem.allegiances,
+              dataAtr: 'Allegiances',
+            }}
+          />
+        ))}
+      </GridTable>
+    );
+  }
+
+  return <>{isSuccess && !isFetching ? content : <Loader />}</>;
 };
 
 export default CharacterList;
