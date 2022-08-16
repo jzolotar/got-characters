@@ -57,11 +57,15 @@ const CharacterInfo = (props: mixedType) => {
     case 'Allegiances':
       return (
         <StyledCharacterInfo dataAtr={props.dataAtr}>
-          {props.allegiances.map((elem, index) => (
-            <a key={index} href={elem}>
-              Link
-            </a>
-          ))}
+          {props.allegiances.map((elem, index) =>
+            elem === 'No Allegiances' ? (
+              <p>{elem}</p>
+            ) : (
+              <a target='_blank' key={index} href={elem}>
+                Link
+              </a>
+            )
+          )}
         </StyledCharacterInfo>
       );
   }

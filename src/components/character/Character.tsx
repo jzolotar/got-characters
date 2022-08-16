@@ -16,6 +16,7 @@ const Character = ({
   cultureData,
   allegiancesData,
 }: Props) => {
+  console.log(typeof allegiancesData.allegiances);
   return (
     <TableRow>
       <CharacterInfo

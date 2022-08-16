@@ -8,11 +8,47 @@ import Loader from '../loader/Loader';
 const CharacterList = () => {
   const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery();
 
-  const mergeNameAlliases = () => {};
+  const mergeNameAlliases = (name: string, arr: string[]) => {
+    let newName = name + ', ' + arr.join(', ');
+    if (name.length === 0) {
+      newName = arr.join(', ');
+    }
+    return newName;
+  };
 
-  const checkAlive = () => {};
+  const checkAlive = (born: string, died: string) => {
+    let alive = '';
 
-  const checkCulture = () => {};
+    if (!born && !died) {
+      alive = 'Unknown';
+    } else if (!died) {
+      alive = 'Yes';
+    } else {
+      alive = 'No';
+    }
+
+    return alive;
+  };
+
+  const checkCulture = (culture: string) => {
+    let cultureInfo = 'Uknown';
+    if (culture) {
+      cultureInfo = culture;
+    }
+
+    return cultureInfo;
+  };
+
+  const checkAllegiances = (allegiances: string[]) => {
+    let newAllegiances: string[] = [];
+    if (allegiances.length === 0) {
+      newAllegiances.push('No Allegiances');
+    } else {
+      newAllegiances = allegiances;
+    }
+
+    return newAllegiances;
+  };
 
   let content;
 
@@ -24,12 +60,21 @@ const CharacterList = () => {
         {data!.characters.map((elem, index) => (
           <Character
             key={index}
-            characterData={{ name: elem.name, dataAtr: 'Character' }}
-            aliveData={{ alive: elem.died, dataAtr: 'Alive' }}
+            characterData={{
+              name: mergeNameAlliases(elem.name, elem.aliases),
+              dataAtr: 'Character',
+            }}
+            aliveData={{
+              alive: checkAlive(elem.born, elem.died),
+              dataAtr: 'Alive',
+            }}
             genderData={{ gender: elem.gender, dataAtr: 'Gender' }}
-            cultureData={{ culture: elem.culture, dataAtr: 'Culture' }}
+            cultureData={{
+              culture: checkCulture(elem.culture),
+              dataAtr: 'Culture',
+            }}
             allegiancesData={{
-              allegiances: elem.allegiances,
+              allegiances: checkAllegiances(elem.allegiances),
               dataAtr: 'Allegiances',
             }}
           />
