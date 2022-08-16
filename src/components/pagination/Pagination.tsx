@@ -1,15 +1,17 @@
+import { StyledPagination } from './Pagination.styled';
+
 interface Props {
   currentPage: number;
   totalPages: number;
-  pageSize: number;
-  siblingCount: number;
+  handlePagination: (page: number) => void;
 }
 
-const Pagination = ({ currentPage, totalPages, siblingCount = 1 }: Props) => {
+const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
   const DOTS = '...';
 
-  const range = (end: number, start: number) => {
+  const range = (start: number, end: number) => {
     let length = end - start + 1;
+    console.log(Array.from({ length }, (_, idx) => idx + start));
     return Array.from({ length }, (_, idx) => idx + start);
   };
 
@@ -51,6 +53,7 @@ const Pagination = ({ currentPage, totalPages, siblingCount = 1 }: Props) => {
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = range(1, leftItemCount);
+      console.log(leftRange);
 
       return [...leftRange, DOTS, totalPages];
     }
@@ -73,7 +76,111 @@ const Pagination = ({ currentPage, totalPages, siblingCount = 1 }: Props) => {
     }
   };
 
-  return <></>;
+  const paginationRange = paginationMagic(currentPage, totalPages);
+
+  console.log(paginationRange);
+
+  return (
+    <StyledPagination>
+      <div>
+        <button
+          onClick={() => handlePagination(currentPage - 1)}
+          type='button'
+          className='side-button'
+        >
+          &lt;
+        </button>
+        <>
+          {paginationRange!.map((pageNumber) => {
+            if (pageNumber === DOTS) {
+              return <span>...</span>;
+            }
+            return (
+              <button
+                onClick={() => handlePagination(Number(pageNumber))}
+                type='button'
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        </>
+
+        <button
+          onClick={() => handlePagination(currentPage + 1)}
+          type='button'
+          className='side-button'
+        >
+          &gt;
+        </button>
+      </div>
+      {/* <button
+      onClick={() => handlePagination(currentPage - 1)}
+      type='button'
+      className='side-button'
+    >
+      &lt;
+    </button>
+
+    <button onClick={() => handlePagination(1)} type='button'>
+      {1}
+    </button>
+
+    {currentPage > 3 && <span>...</span>}
+
+    {currentPage === totalPages && totalPages > 3 && (
+      <button
+        onClick={() => handlePagination(currentPage - 2)}
+        type='button'
+      >
+        {currentPage - 2}
+      </button>
+    )}
+
+    {currentPage > 2 && (
+      <button
+        onClick={() => handlePagination(currentPage - 1)}
+        type='button'
+      >
+        {currentPage - 1}
+      </button>
+    )}
+
+    {currentPage !== 1 && currentPage !== totalPages && (
+      <button onClick={() => handlePagination(currentPage)} type='button'>
+        {currentPage}
+      </button>
+    )}
+    {currentPage < totalPages - 1 && (
+      <button
+        onClick={() => handlePagination(currentPage + 1)}
+        type='button'
+      >
+        {currentPage + 1}
+      </button>
+    )}
+    {currentPage === 1 && totalPages > 3 && (
+      <button
+        onClick={() => handlePagination(currentPage + 2)}
+        type='button'
+      >
+        {currentPage + 2}
+      </button>
+    )}
+    {currentPage < totalPages - 2 && <span>...</span>}
+    <button onClick={() => handlePagination(totalPages)} type='button'>
+      {totalPages}
+    </button>
+
+    <button
+      onClick={() => handlePagination(currentPage + 1)}
+      type='button'
+      className='side-button'
+    >
+      &gt;
+    </button> */}
+    </StyledPagination>
+  );
 };
 
 export default Pagination;

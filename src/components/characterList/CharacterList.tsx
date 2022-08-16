@@ -4,8 +4,14 @@ import TableHeader from '../tableHeader/TableHeader';
 import Character from '../character/Character';
 import { useGetCharactersByDefaultQuery } from '../../redux/api';
 import Loader from '../loader/Loader';
+import { useState } from 'react';
+import Pagination from '../pagination/Pagination';
 
 const CharacterList = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePagination = (updatedPage: number) => setCurrentPage(updatedPage);
+
   const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery();
 
   const mergeNameAlliases = (name: string, arr: string[]) => {
@@ -55,31 +61,38 @@ const CharacterList = () => {
   if (isSuccess) {
     console.log(data.characters);
     content = (
-      <GridTable>
-        <TableHeader />
-        {data!.characters.map((elem, index) => (
-          <Character
-            key={index}
-            characterData={{
-              name: mergeNameAlliases(elem.name, elem.aliases),
-              dataAtr: 'Character',
-            }}
-            aliveData={{
-              alive: checkAlive(elem.born, elem.died),
-              dataAtr: 'Alive',
-            }}
-            genderData={{ gender: elem.gender, dataAtr: 'Gender' }}
-            cultureData={{
-              culture: checkCulture(elem.culture),
-              dataAtr: 'Culture',
-            }}
-            allegiancesData={{
-              allegiances: checkAllegiances(elem.allegiances),
-              dataAtr: 'Allegiances',
-            }}
-          />
-        ))}
-      </GridTable>
+      <>
+        <GridTable>
+          <TableHeader />
+          {data!.characters.map((elem, index) => (
+            <Character
+              key={index}
+              characterData={{
+                name: mergeNameAlliases(elem.name, elem.aliases),
+                dataAtr: 'Character',
+              }}
+              aliveData={{
+                alive: checkAlive(elem.born, elem.died),
+                dataAtr: 'Alive',
+              }}
+              genderData={{ gender: elem.gender, dataAtr: 'Gender' }}
+              cultureData={{
+                culture: checkCulture(elem.culture),
+                dataAtr: 'Culture',
+              }}
+              allegiancesData={{
+                allegiances: checkAllegiances(elem.allegiances),
+                dataAtr: 'Allegiances',
+              }}
+            />
+          ))}
+        </GridTable>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Number(data.pageInfo.last.page)}
+          handlePagination={handlePagination}
+        />
+      </>
     );
   }
 
