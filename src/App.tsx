@@ -1,8 +1,16 @@
 import React from 'react';
-import CharacterList from './components/characterList/CharacterList';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import HousePage from './pages/HousePage';
+import CharacterPage from './pages/CharacterPage';
 
 function App() {
-  return <CharacterList />;
+  return (
+    <Routes>
+      <Route path='/' element={<Navigate replace to='/characters' />} />
+      <Route path='/characters/' element={<CharacterPage />} />
+      <Route path='/houses/:id' element={<HousePage />} />
+    </Routes>
+  );
 }
 
 export default App;

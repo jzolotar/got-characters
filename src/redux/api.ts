@@ -115,14 +115,18 @@ export const gotApi = createApi({
     }),
 
     getCharactersByInput: builder.query<CharacterData[], InputType>({
-      query: ({ page, pageSize }) => `?page=${page}&pageSize=${pageSize}`,
+      query: ({ page, pageSize }) =>
+        `characters?page=${page}&pageSize=${pageSize}`,
     }),
 
-    getHouseData: builder.query<HouseData[], string>({
+    getHouseData: builder.query<HouseData, string>({
       query: (id) => `houses/${id}`,
     }),
   }),
 });
 
-export const { useGetCharactersByDefaultQuery, useGetCharactersByInputQuery } =
-  gotApi;
+export const {
+  useGetCharactersByDefaultQuery,
+  useGetCharactersByInputQuery,
+  useGetHouseDataQuery,
+} = gotApi;
