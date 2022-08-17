@@ -24,7 +24,13 @@ const House = ({
   codeBranches,
 }: Props) => {
   const mergArrData = (arr: string[]) => {
-    let mergedData: string = '';
+    let mergedData: string;
+
+    if (arr.length === 1 && !arr[0]) {
+      return 'No data';
+    }
+
+    mergedData = arr.join(', ');
     return mergedData;
   };
 
@@ -34,12 +40,16 @@ const House = ({
     return numOfBranches.toString();
   };
 
+  const checkIfUnknow = (data: string) => {
+    return data ? data : 'No data';
+  };
+
   return (
     <HouseDetails
       name={name}
       region={region}
       coatOfArms={coatOfArms}
-      words={words}
+      words={checkIfUnknow(words)}
       titles={mergArrData(titles)}
       seats={mergArrData(seats)}
       overlord={overlord ? 'Yes' : 'No'}

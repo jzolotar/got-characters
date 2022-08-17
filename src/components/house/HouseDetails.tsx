@@ -1,3 +1,5 @@
+import { StyledHouseDetails } from './HouseDetails.styled';
+
 interface Props {
   name: string;
   region: string;
@@ -21,7 +23,20 @@ const HouseDetails = ({
   diedOut,
   codeBranches,
 }: Props) => {
-  return null;
+  return (
+    <StyledHouseDetails>
+      <article>
+        <div>{name}</div>
+        <div>Region: {region}</div>
+        <div>Coat Of Arms: {coatOfArms}</div>
+        <div>Words: {words}</div>
+        <div>Titles: {titles}</div>
+        <div>Seats: {seats}</div>
+        <div>Has Overlord: {overlord}</div>
+        <div>Died Out: {diedOut}</div>
+        <div>Num of Branches: {codeBranches}</div>
+      </article>
+    </StyledHouseDetails>
+  );
 };
-
 export default HouseDetails;
