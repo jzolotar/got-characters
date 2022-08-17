@@ -91,14 +91,16 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           &lt;
         </button>
         <>
-          {paginationRange!.map((pageNumber) => {
+          {paginationRange!.map((pageNumber, index) => {
             if (pageNumber === DOTS) {
               return <span>...</span>;
             }
             return (
               <button
+                key={index}
                 onClick={() => handlePagination(Number(pageNumber))}
                 type='button'
+                className={pageNumber === currentPage ? 'active' : ''}
               >
                 {pageNumber}
               </button>
@@ -114,71 +116,6 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           &gt;
         </button>
       </div>
-      {/* <button
-      onClick={() => handlePagination(currentPage - 1)}
-      type='button'
-      className='side-button'
-    >
-      &lt;
-    </button>
-
-    <button onClick={() => handlePagination(1)} type='button'>
-      {1}
-    </button>
-
-    {currentPage > 3 && <span>...</span>}
-
-    {currentPage === totalPages && totalPages > 3 && (
-      <button
-        onClick={() => handlePagination(currentPage - 2)}
-        type='button'
-      >
-        {currentPage - 2}
-      </button>
-    )}
-
-    {currentPage > 2 && (
-      <button
-        onClick={() => handlePagination(currentPage - 1)}
-        type='button'
-      >
-        {currentPage - 1}
-      </button>
-    )}
-
-    {currentPage !== 1 && currentPage !== totalPages && (
-      <button onClick={() => handlePagination(currentPage)} type='button'>
-        {currentPage}
-      </button>
-    )}
-    {currentPage < totalPages - 1 && (
-      <button
-        onClick={() => handlePagination(currentPage + 1)}
-        type='button'
-      >
-        {currentPage + 1}
-      </button>
-    )}
-    {currentPage === 1 && totalPages > 3 && (
-      <button
-        onClick={() => handlePagination(currentPage + 2)}
-        type='button'
-      >
-        {currentPage + 2}
-      </button>
-    )}
-    {currentPage < totalPages - 2 && <span>...</span>}
-    <button onClick={() => handlePagination(totalPages)} type='button'>
-      {totalPages}
-    </button>
-
-    <button
-      onClick={() => handlePagination(currentPage + 1)}
-      type='button'
-      className='side-button'
-    >
-      &gt;
-    </button> */}
     </StyledPagination>
   );
 };
