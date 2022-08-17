@@ -37,6 +37,24 @@ function parseLinkHeader(header: string): KeyValueMap<Object> {
   return links;
 }
 
+interface HouseData {
+  url: string;
+  name: string;
+  region: string;
+  coatOfArms: string;
+  words: string;
+  titles: string[];
+  seats: string[];
+  currentLord: string;
+  heir: string;
+  overlord: string;
+  founded: string;
+  diedOut: string;
+  ancestralWeapons: string[];
+  codeBranches: string[];
+  swornMembers: string[];
+}
+
 interface KeyValueMap<T> {
   [key: string]: T;
 }
@@ -77,11 +95,11 @@ interface InputType {
 export const gotApi = createApi({
   reducerPath: 'gotApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://www.anapioficeandfire.com/api/characters',
+    baseUrl: 'https://www.anapioficeandfire.com/api/',
   }),
   endpoints: (builder) => ({
     getCharactersByDefault: builder.query<FinalData, number>({
-      query: (page) => `?page=${page}&pageSize=10`,
+      query: (page) => `characters?page=${page}&pageSize=10`,
       transformResponse: (response: CharacterData[], meta, arg) => {
         // console.log(meta?.response?.headers.get('Link'));
         // console.log(Object.keys(meta!.response!.headers));
@@ -95,8 +113,13 @@ export const gotApi = createApi({
         return transformedResponsed;
       },
     }),
+
     getCharactersByInput: builder.query<CharacterData[], InputType>({
       query: ({ page, pageSize }) => `?page=${page}&pageSize=${pageSize}`,
+    }),
+
+    getHouseData: builder.query<HouseData[], string>({
+      query: (id) => `houses/${id}`,
     }),
   }),
 });
