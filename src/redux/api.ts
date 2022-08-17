@@ -80,8 +80,8 @@ export const gotApi = createApi({
     baseUrl: 'https://www.anapioficeandfire.com/api/characters',
   }),
   endpoints: (builder) => ({
-    getCharactersByDefault: builder.query<FinalData, void>({
-      query: () => `?page=1&pageSize=10`,
+    getCharactersByDefault: builder.query<FinalData, number>({
+      query: (page) => `?page=${page}&pageSize=10`,
       transformResponse: (response: CharacterData[], meta, arg) => {
         // console.log(meta?.response?.headers.get('Link'));
         // console.log(Object.keys(meta!.response!.headers));

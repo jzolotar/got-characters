@@ -12,7 +12,7 @@ const CharacterList = () => {
 
   const handlePagination = (updatedPage: number) => setCurrentPage(updatedPage);
 
-  const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery();
+  const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery(currentPage);
 
   const mergeNameAlliases = (name: string, arr: string[]) => {
     let newName = name + ', ' + arr.join(', ');
