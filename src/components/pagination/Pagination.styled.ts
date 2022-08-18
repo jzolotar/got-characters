@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 
 export const StyledPagination = styled.section`
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   display: grid;
   place-items: center;
   padding: 1.5rem 0;
+  top: 750px;
+  @media (max-width: 800px) {
+    top: 25px;
+  }
 
   div {
     display: grid;

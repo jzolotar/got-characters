@@ -12,7 +12,8 @@ const CharacterList = () => {
 
   const handlePagination = (updatedPage: number) => setCurrentPage(updatedPage);
 
-  const { data, isSuccess, isFetching } = useGetCharactersByDefaultQuery(currentPage);
+  const { data, isSuccess, isFetching, isLoading } =
+    useGetCharactersByDefaultQuery(currentPage);
 
   const mergeNameAlliases = (name: string, arr: string[]) => {
     let newName = name + ', ' + arr.join(', ');
@@ -87,16 +88,22 @@ const CharacterList = () => {
             />
           ))}
         </GridTable>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Number(data.pageInfo.last.page)}
-          handlePagination={handlePagination}
-        />
       </>
     );
   }
 
-  return <>{isSuccess && !isFetching ? content : <Loader />}</>;
+  return (
+    <>
+      {isSuccess && !isFetching ? content : <Loader />}{' '}
+      {!isLoading && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Number(data!.pageInfo.last.page)}
+          handlePagination={handlePagination}
+        />
+      )}
+    </>
+  );
 };
 
 export default CharacterList;

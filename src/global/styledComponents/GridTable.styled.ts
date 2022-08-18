@@ -9,6 +9,7 @@ export const GridTable = styled.section`
   gap: 0.25rem;
 
   @media (max-width: 800px) {
+    margin-top: 3.75rem;
     grid-gap: 2rem;
     background: transparent;
     box-shadow: none;
