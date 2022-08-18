@@ -1,4 +1,5 @@
 import { StyledCharacterInfo } from './CharacterInfo.styled';
+import { NavLink } from 'react-router-dom';
 
 type characterData = {
   name: string;
@@ -61,9 +62,13 @@ const CharacterInfo = (props: mixedType) => {
             elem === 'No Allegiances' ? (
               <p>{elem}</p>
             ) : (
-              <a target='_blank' key={index} href={elem}>
+              <NavLink
+                target='_blank'
+                key={index}
+                to={`/houses/${elem.slice(45)}`}
+              >
                 Link
-              </a>
+              </NavLink>
             )
           )}
         </StyledCharacterInfo>
