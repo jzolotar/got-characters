@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { StyledHouseDetails } from './HouseDetails.styled';
 
 interface Props {
@@ -10,6 +11,10 @@ interface Props {
   overlord: string;
   diedOut: string;
   codeBranches: string;
+}
+
+interface StyledProps {
+  dataAtr: string;
 }
 
 const HouseDetails = ({
@@ -26,17 +31,31 @@ const HouseDetails = ({
   return (
     <StyledHouseDetails>
       <article>
-        <div>{name}</div>
-        <div>Region: {region}</div>
-        <div>Coat Of Arms: {coatOfArms}</div>
-        <div>Words: {words}</div>
-        <div>Titles: {titles}</div>
-        <div>Seats: {seats}</div>
-        <div>Has Overlord: {overlord}</div>
-        <div>Died Out: {diedOut}</div>
-        <div>Num of Branches: {codeBranches}</div>
+        <StyledHouse dataAtr='Name'>{name}</StyledHouse>
+        <StyledHouse dataAtr='Region'>{region}</StyledHouse>
+        <StyledHouse dataAtr='Coat Of Arms'>"{coatOfArms}"</StyledHouse>
+        <StyledHouse dataAtr='Words'>{words}</StyledHouse>
+        <StyledHouse dataAtr='Titles'>{titles}</StyledHouse>
+        <StyledHouse dataAtr='Seats'> {seats}</StyledHouse>
+        <StyledHouse dataAtr='Overlord'>{overlord}</StyledHouse>
+        <StyledHouse dataAtr='Died Out'> {diedOut}</StyledHouse>
+        <StyledHouse dataAtr='Branches'>{codeBranches}</StyledHouse>
       </article>
     </StyledHouseDetails>
   );
 };
 export default HouseDetails;
+
+const StyledHouse = styled.div<StyledProps>`
+  &:before {
+    content: '${(props) => props.dataAtr}';
+    font-weight: bold;
+    display: block;
+    background: rgba(193, 193, 193, 0.528);
+    /* background: linear-gradient(to right, #5b86e5, #36d1dc); */
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+`;

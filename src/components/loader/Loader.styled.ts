@@ -6,9 +6,8 @@ export const StyledLoader = styled.div`
   padding: 0px;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
   top: 50%;
-  transform: translateY(-50%);
 
   span {
     vertical-align: middle;
@@ -28,11 +27,6 @@ export const StyledLoader = styled.div`
     background: rgba(255, 255, 255, 0.6);
   }
 
-  pan:nth-child(1) {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-    background: rgba(255, 255, 255, 0.6);
-  }
   span:nth-child(2) {
     -webkit-animation-delay: -0.8s;
     animation-delay: -0.8s;
