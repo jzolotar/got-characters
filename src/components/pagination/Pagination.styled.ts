@@ -8,9 +8,10 @@ export const StyledPagination = styled.section`
   display: grid;
   place-items: center;
   padding: 1.5rem 0;
-  top: 54.8rem;
+  bottom: 320px;
   @media (max-width: 800px) {
     top: 10px;
+    bottom: unset;
   }
 
   div {

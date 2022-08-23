@@ -7,6 +7,8 @@ import Loader from '../loader/Loader';
 import { useState } from 'react';
 import Pagination from '../pagination/Pagination';
 
+import styled from 'styled-components';
+
 const CharacterList = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -93,7 +95,7 @@ const CharacterList = () => {
   }
 
   return (
-    <>
+    <Wrapper>
       {isSuccess && !isFetching ? content : <Loader />}{' '}
       {!isLoading && (
         <Pagination
@@ -102,8 +104,15 @@ const CharacterList = () => {
           handlePagination={handlePagination}
         />
       )}
-    </>
+    </Wrapper>
   );
 };
 
 export default CharacterList;
+
+const Wrapper = styled.div`
+  height: 1200px;
+  @media (max-width: 800px) {
+    height: unset;
+  }
+`;

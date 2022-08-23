@@ -9,7 +9,7 @@ export const GridTable = styled.section`
   gap: 0.25rem;
   width: 100%;
   max-width: 68.75rem;
-  height: 100%;
+  min-height: 820px;
 
   @media (max-width: 800px) {
     margin-top: 3.75rem;
