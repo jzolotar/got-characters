@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
 }
 html, body {
-  height: 100%;
+  min-height: 100vh;
 }
 body {
   line-height: 1.5;
@@ -27,6 +27,14 @@ input, button, textarea, select {
 }
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.25rem;
 }
 #root, #__next {
   isolation: isolate;
