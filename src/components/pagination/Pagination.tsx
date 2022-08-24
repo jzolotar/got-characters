@@ -87,6 +87,7 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           onClick={() => handlePagination(currentPage - 1)}
           type='button'
           className='side-button'
+          disabled={currentPage === 1}
         >
           &lt;
         </button>
@@ -112,6 +113,7 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           onClick={() => handlePagination(currentPage + 1)}
           type='button'
           className='side-button'
+          disabled={currentPage === totalPages}
         >
           &gt;
         </button>
