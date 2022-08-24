@@ -104,7 +104,7 @@ const CharacterList = () => {
 
   return (
     <Wrapper>
-      {isSuccess && !isFetching ? content : <Loader />}{' '}
+      {isSuccess && !isFetching ? content : <Loader />}
       {!isLoading && (
         <Pagination
           currentPage={currentPage}

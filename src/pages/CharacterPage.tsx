@@ -4,7 +4,7 @@ const CharacterPage = () => {
   return (
     <>
       <Header title={'Characters Page'} />
-      <CharacterList />;
+      <CharacterList />
     </>
   );
 };
