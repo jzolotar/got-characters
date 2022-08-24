@@ -1,10 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+import Header from '../components/header/header';
 import House from '../components/house/House';
 import Loader from '../components/loader/Loader';
-import {
-  useGetHouseDataQuery,
-  useGetCharactersByInputQuery,
-} from '../redux/api';
+import { useGetHouseDataQuery } from '../redux/api';
 
 const HousePage = () => {
   let { id } = useParams();
@@ -16,6 +14,7 @@ const HousePage = () => {
 
   let content = (
     <>
+      <Header title='House Page' />
       {isSuccess ? (
         <House
           name={data.name}

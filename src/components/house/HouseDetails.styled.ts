@@ -8,6 +8,10 @@ export const StyledHouseDetails = styled.section`
   width: 100%;
   max-width: 950px;
   margin: 0 auto;
+  margin-top: 5.5rem;
+  @media (max-width: 820px) {
+    margin-top: 7rem;
+  }
 
   article {
     display: grid;
@@ -33,18 +37,6 @@ export const StyledHouseDetails = styled.section`
     border-radius: 0.5rem;
 
     background-color: #f4f4f4;
-
-    /* &:before {
-      content: 'Test';
-      font-weight: bold;
-      display: block;
-      background: rgba(193, 193, 193, 0.528); */
-    /* background: linear-gradient(to right, #5b86e5, #36d1dc); */
-    /* padding: 0.75rem;
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-      border-radius: 0.5rem 0.5rem 0 0; */
-    /* } */
 
     &:first-child {
       @media (min-width: 820px) {

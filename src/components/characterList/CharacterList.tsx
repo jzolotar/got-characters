@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { useAppDispatch } from '../../redux/hooks/hooks';
 import { useAppSelector } from '../../redux/hooks/hooks';
 import { goToSelectedPage } from '../../redux/paginationInfo';
+import Header from '../header/header';
 
 const CharacterList = () => {
   const dispatch = useAppDispatch();
@@ -119,7 +120,10 @@ export default CharacterList;
 
 const Wrapper = styled.div`
   height: 1200px;
+  margin-top: 5rem;
+
   @media (max-width: 800px) {
     height: unset;
+    margin-top: 10rem;
   }
 `;
