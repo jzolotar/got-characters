@@ -4,15 +4,22 @@ import TableHeader from '../tableHeader/TableHeader';
 import Character from '../character/Character';
 import { useGetCharactersByDefaultQuery } from '../../redux/api';
 import Loader from '../loader/Loader';
-import { useState } from 'react';
-import Pagination from '../pagination/Pagination';
 
+import Pagination from '../pagination/Pagination';
 import styled from 'styled-components';
 
-const CharacterList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+import { useAppDispatch } from '../../redux/hooks/hooks';
+import { useAppSelector } from '../../redux/hooks/hooks';
+import { goToSelectedPage } from '../../redux/paginationInfo';
 
-  const handlePagination = (updatedPage: number) => setCurrentPage(updatedPage);
+const CharacterList = () => {
+  const dispatch = useAppDispatch();
+  const currentPage = useAppSelector(
+    (state) => state.paginationInfo.currentPage
+  );
+
+  const handlePagination = (updatedPage: number) =>
+    dispatch(goToSelectedPage(updatedPage));
 
   const { data, isSuccess, isFetching, isLoading } =
     useGetCharactersByDefaultQuery(currentPage);

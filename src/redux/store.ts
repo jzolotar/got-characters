@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { gotApi } from './api';
+import paginationInfo from './paginationInfo';
 
 export const store = configureStore({
   reducer: {
     [gotApi.reducerPath]: gotApi.reducer,
+    paginationInfo: paginationInfo,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(gotApi.middleware),
