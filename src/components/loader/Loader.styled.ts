@@ -8,6 +8,9 @@ export const StyledLoader = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   top: 50%;
+  @media (max-width: 800px) {
+    top: 30%;
+  }
 
   span {
     vertical-align: middle;
