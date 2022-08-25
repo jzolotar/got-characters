@@ -131,11 +131,11 @@ const CharacterList = () => {
 export default CharacterList;
 
 const Wrapper = styled.div`
-  height: 1200px;
+  min-height: 1200px;
+  position: relative;
   margin-top: 5rem;
 
   @media (max-width: 800px) {
-    height: unset;
-    margin-top: 10rem;
+    padding-bottom: 6.75rem;
   }
 `;

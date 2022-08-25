@@ -10,8 +10,8 @@ export const StyledPagination = styled.section`
   padding: 1.5rem 0;
   bottom: 15rem;
   @media (max-width: 800px) {
-    top: 6.2rem;
-    bottom: unset;
+    /* top: 6.2rem; */
+    bottom: 0px;
   }
 
   div {

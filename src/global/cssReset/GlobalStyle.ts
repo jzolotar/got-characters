@@ -39,6 +39,9 @@ ul {
   padding: 0;
   margin: 0;
   display: flex;
+  @media (max-width:800px){
+    justify-content: center
+  };
   gap: 0.25rem;
 }
 #root, #__next {
