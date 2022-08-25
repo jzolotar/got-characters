@@ -18,8 +18,10 @@ const CharacterList = () => {
     (state) => state.paginationInfo.currentPage
   );
 
-  const handlePagination = (updatedPage: number) =>
+  const handlePagination = (updatedPage: number) => {
     dispatch(goToSelectedPage(updatedPage));
+    window.scrollTo(0, 0);
+  };
 
   const { data, isSuccess, isFetching, isLoading } =
     useGetCharactersByDefaultQuery(currentPage);
