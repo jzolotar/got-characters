@@ -11,7 +11,6 @@ import styled from 'styled-components';
 import { useAppDispatch } from '../../redux/hooks/hooks';
 import { useAppSelector } from '../../redux/hooks/hooks';
 import { goToSelectedPage } from '../../redux/paginationInfo';
-import Header from '../header/header';
 
 const CharacterList = () => {
   const dispatch = useAppDispatch();
@@ -27,13 +26,21 @@ const CharacterList = () => {
 
   const mergeNameAlliases = (name: string, arr: string[]) => {
     let newName = '';
-    let table;
-    if (name) {
-      table = [name, ...arr];
-    } else {
-      table = arr;
+    //display name + titles when there is name and titles avaialble
+    if (name && arr[0]) {
+      newName = [name, ...arr].join(', ');
     }
-    newName = table.join(', ');
+
+    //display name if there are no titles
+    if (name && !arr[0]) {
+      newName = name;
+    }
+
+    //display only title when there is no name
+
+    if (!name) {
+      newName = arr.join(', ');
+    }
 
     return newName;
   };
