@@ -26,10 +26,15 @@ const CharacterList = () => {
     useGetCharactersByDefaultQuery(currentPage);
 
   const mergeNameAlliases = (name: string, arr: string[]) => {
-    let newName = name + ', ' + arr.join(', ');
-    if (name.length === 0) {
-      newName = arr.join(', ');
+    let newName = '';
+    let table;
+    if (name) {
+      table = [name, ...arr];
+    } else {
+      table = arr;
     }
+    newName = table.join(', ');
+
     return newName;
   };
 
