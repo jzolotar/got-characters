@@ -82,7 +82,6 @@ const CharacterList = () => {
   let content;
 
   if (isSuccess) {
-    console.log(data.characters);
     content = (
       <>
         <GridTable>

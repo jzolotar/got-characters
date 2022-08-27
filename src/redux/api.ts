@@ -101,15 +101,12 @@ export const gotApi = createApi({
     getCharactersByDefault: builder.query<FinalData, number>({
       query: (page) => `characters?page=${page}&pageSize=10`,
       transformResponse: (response: CharacterData[], meta, arg) => {
-        // console.log(meta?.response?.headers.get('Link'));
-        // console.log(Object.keys(meta!.response!.headers));
         const link = meta!.response!.headers.get('Link') as string;
 
         const transformedResponsed = {
           characters: response,
           pageInfo: parseLinkHeader(link),
         } as FinalData;
-        console.log('response transformed');
         return transformedResponsed;
       },
     }),

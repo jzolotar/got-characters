@@ -11,7 +11,6 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
 
   const range = (start: number, end: number) => {
     let length = end - start + 1;
-    console.log(Array.from({ length }, (_, idx) => idx + start));
     return Array.from({ length }, (_, idx) => idx + start);
   };
 
@@ -53,7 +52,6 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = range(1, leftItemCount);
-      console.log(leftRange);
 
       return [...leftRange, DOTS, totalPages];
     }
@@ -77,8 +75,6 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
   };
 
   const paginationRange = paginationMagic(currentPage, totalPages);
-
-  console.log(paginationRange);
 
   return (
     <StyledPagination>
