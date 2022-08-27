@@ -6,9 +6,9 @@ import CharacterPage from './pages/CharacterPage';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Navigate replace to='/characters' />} />
-      <Route path='/characters/' element={<CharacterPage />} />
-      <Route path='/houses/:id' element={<HousePage />} />
+      <Route path='/' element={<Navigate replace to='/got-characters' />} />
+      <Route path='/got-characters' element={<CharacterPage />} />
+      <Route path='/got-characters/houses/:id' element={<HousePage />} />
     </Routes>
   );
 }

@@ -64,7 +64,10 @@ const CharacterInfo = (props: mixedType) => {
                 <li>{elem}</li>
               ) : (
                 <li>
-                  <NavLink key={index} to={`/houses/${elem.slice(45)}`}>
+                  <NavLink
+                    key={index}
+                    to={`/got-characters/houses/${elem.slice(45)}`}
+                  >
                     Link
                   </NavLink>
                 </li>

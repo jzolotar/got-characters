@@ -16,7 +16,7 @@ const HousePage = () => {
   let content = (
     <>
       <Header title='House Page' />
-      <StyledBtn to='/characters'>back to characters list </StyledBtn>
+      <StyledBtn to='/got-characters'>back to characters list </StyledBtn>
       {isSuccess ? (
         <House
           name={data.name}
