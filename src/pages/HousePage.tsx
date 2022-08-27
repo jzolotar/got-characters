@@ -1,9 +1,9 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../components/header/header';
 import House from '../components/house/House';
 import Loader from '../components/loader/Loader';
 import { useGetHouseDataQuery } from '../redux/api';
-import styled from 'styled-components';
+import { StyledBtn } from '../global/styledComponents/StyledBtn.styled';
 
 const HousePage = () => {
   let { id } = useParams();
@@ -38,24 +38,3 @@ const HousePage = () => {
 };
 
 export default HousePage;
-
-const StyledBtn = styled(NavLink)`
-  text-transform: uppercase;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  top: 95px;
-  border-radius: 0.5rem;
-  border: none;
-  padding: 0.1rem 3.5rem;
-  text-decoration: none;
-  color: #000;
-  font-weight: 700;
-  border: 2px solid #333;
-  cursor: pointer;
-  @media (max-width: 833px) {
-    width: 320px;
-    text-align: center;
-    padding: 0.1rem 0;
-  }
-`;

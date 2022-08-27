@@ -4,13 +4,11 @@ import TableHeader from '../tableHeader/TableHeader';
 import Character from '../character/Character';
 import { useGetCharactersByDefaultQuery } from '../../redux/api';
 import Loader from '../loader/Loader';
-
 import Pagination from '../pagination/Pagination';
-import styled from 'styled-components';
-
 import { useAppDispatch } from '../../redux/hooks/hooks';
 import { useAppSelector } from '../../redux/hooks/hooks';
 import { goToSelectedPage } from '../../redux/paginationInfo';
+import { Wrapper } from '../../global/styledComponents/Wrapper.styled';
 
 const CharacterList = () => {
   const dispatch = useAppDispatch();
@@ -131,13 +129,3 @@ const CharacterList = () => {
 };
 
 export default CharacterList;
-
-const Wrapper = styled.div`
-  min-height: 1200px;
-  position: relative;
-  margin-top: 5rem;
-
-  @media (max-width: 800px) {
-    padding-bottom: 6.75rem;
-  }
-`;
