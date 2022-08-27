@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# GoT API app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple React app for displaying data from an API of Ice And Fire[https://anapioficeandfire.com/]. That API uses no authentication and is available over HTTPS.
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+The application displays the Table of Characters page.
+From the Table of Characters users can go to a dedicated page with the House Details.
+From the House Details page it should be possible to go back to the Table of Characters page.
 
-### `npm start`
+### `Table of Characters`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### `Columns`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`Character`
+Concatenate character name and all aliases using comma.
 
-### `npm test`
+`Alive`
+Based on born and died fields:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Display "Unknown” if both born and died are not provided.
+- Display "No” if born is not provided.
+- Display "Yes" when Character has not died.
 
-### `npm run build`
+`Gender`
+Based on the gender field.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`Culture`
+Based on the culture field.
+Display "Unknown" when not provided.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`Allegiances`
+Display list of House id fields based on what is found in allegiances field.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `House Details`
 
-### `npm run eject`
+The page with the House Details should display the following data:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Name of the House
+- Region
+- Coat of Arms
+- Words
+- Titles
+- Seats
+- Has died out
+- Has overlord
+- Number of Cadet Branches
+  Each House should be accessible by a dedicated URL.
