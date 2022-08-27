@@ -61,13 +61,10 @@ const CharacterInfo = (props: mixedType) => {
           <ul>
             {props.allegiances.map((elem, index) =>
               elem === 'No Allegiances' ? (
-                <li>{elem}</li>
+                <li key={index}>{elem}</li>
               ) : (
-                <li>
-                  <NavLink
-                    key={index}
-                    to={`/got-characters/houses/${elem.slice(45)}`}
-                  >
+                <li key={index}>
+                  <NavLink to={`/got-characters/houses/${elem.slice(45)}`}>
                     Link
                   </NavLink>
                 </li>

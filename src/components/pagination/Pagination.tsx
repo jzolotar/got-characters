@@ -84,13 +84,14 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           type='button'
           className='side-button'
           disabled={currentPage === 1}
+          key='start'
         >
           &lt;
         </button>
         <>
           {paginationRange!.map((pageNumber, index) => {
             if (pageNumber === DOTS) {
-              return <span>...</span>;
+              return <span key={index}>...</span>;
             }
             return (
               <button
@@ -110,6 +111,7 @@ const Pagination = ({ currentPage, totalPages, handlePagination }: Props) => {
           type='button'
           className='side-button'
           disabled={currentPage === totalPages}
+          key='end'
         >
           &gt;
         </button>
